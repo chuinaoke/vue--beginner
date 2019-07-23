@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- //先创建一个div -->
+    <div  id="app">
+        <!-- 创建一个input  model数据互通-->
+        <input type="text" v-model="inputValue">
+        <!-- 创建一个button  使用v-on：click创建点击事件 后面添加 的值是它的使用方法-->
+        <button v-on:click="button">提交</button>
+        <ul>
+            <!-- v-for 是创建for循环事件 -->
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        // Vue 使用方法就是变量后面 添加new Vue({})
+        var app =new Vue({
+            //获取id为app的div
+            el:'#app',
+            data:{
+                list:['hellow'],
+                inputValue:'hellow',
+            },
+            //methods 为vue调用函数的方法
+            methods:{
+                button:function(){
+                    this.list.push(this.inputValue);
+                    this.inputValue = '';
+                }
+            }
+        })
+    
+    
+    </script>
+</body>
+</html>
