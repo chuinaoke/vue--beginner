@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hellow word</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">{{content}}</div>
+
+    <!-- <div>{{content}}</div> -->
+    <script>
+        // var dom = document.getElementById('app');
+        // dom.innerHTML = "hellow word";
+        var app = new Vue({
+            //只接管 id为app的div 里面的content 而不会去接管其他的div
+            el:'#app',
+            data:{
+                content:'hellow word'
+            }
+        })
+
+        //使用vue 来创建 间隔两秒 将content内容更改
+        setInterval(function(){
+            app.$data.content = 'bey word'
+        },2000);
+    </script>
+</body>
+</html>

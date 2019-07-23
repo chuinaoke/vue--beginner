@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList Jquery</title>
+    <script src="./jquery-3.4.1/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="input"/> <!--视图发生改变 -->
+        <button id="btn">提交</button>
+        <ul id="list"></ul>
+    </div>
+    <script>
+    //使用jquery 来实现 TodoList    
+
+        // M 模型层  V  视图  P  控制器
+        function Page(){
+
+        }
+        //extend = 扩展   控制器
+        $.extend(Page.prototype,{
+            init:function(){
+                this.bindEvents()
+            },
+            bindEvents:function(){
+                var btn = $('#btn');
+                //$proxy将 handBtnClick 永远绑成了这个时候的this实例
+                btn.on('click',$.proxy(this.handBtnClick,this))
+            },
+            handBtnClick:function(){
+                var input = $('#input');
+                var inputValue =input.val();
+                var ul = $('#list');
+                ul.append('<li>'+ inputValue +'</li>');
+                input.val('');
+            }
+        });
+        var page = new Page;
+        page.init();
+    </script>
+</body>
+
+</html>
